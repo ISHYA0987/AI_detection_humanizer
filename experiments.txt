@@ -302,3 +302,105 @@ Observations:
 • Linear SVM proved highly effective for high-dimensional sparse TF-IDF features.
 • This model is selected as the strongest traditional machine learning baseline.
 
+================================================================================
+EXPERIMENT 4
+================================================================================
+
+Date: 20-06-2026
+
+Title:
+Hybrid Linear SVM using TF-IDF and Handcrafted Linguistic Features
+
+Objective:
+Evaluate whether combining TF-IDF with handcrafted linguistic features improves
+AI-generated text detection compared to using TF-IDF alone.
+
+Dataset:
+final_dataset_trimmed.csv
+
+Dataset Split:
+Train       : 266,003
+Validation  : 33,250
+Test        : 33,251
+
+Text Preprocessing:
+-------------------
+- Remove URLs
+- Remove HTML Tags
+- Normalize Whitespaces
+- Preserve punctuation
+- Preserve stopwords
+- No stemming
+- No lemmatization
+
+TF-IDF Parameters:
+------------------
+lowercase=True
+ngram_range=(1,2)
+min_df=5
+max_df=0.95
+max_features=100000
+sublinear_tf=True
+
+Handcrafted Features:
+---------------------
+- Word Count
+- Character Count
+- Sentence Count
+- Average Word Length
+- Average Sentence Length
+- Punctuation Count
+- Comma Count
+- Exclamation Count
+- Question Count
+- Digit Count
+- Uppercase Ratio
+- Unique Word Ratio
+- Average Characters per Sentence
+
+Feature Scaling:
+----------------
+StandardScaler
+
+Model:
+------
+LinearSVC
+C = 1
+class_weight = balanced
+max_iter = 5000
+random_state = 42
+
+Validation Results:
+-------------------
+Accuracy : 0.9083
+Precision: 0.9317
+Recall   : 0.9331
+F1 Score : 0.9324
+ROC AUC  : 0.9597
+
+Test Results:
+-------------
+Accuracy : 0.9115
+Precision: 0.9337
+Recall   : 0.9359
+F1 Score : 0.9348
+ROC AUC  : 0.9609
+
+Comparison with TF-IDF Linear SVM:
+----------------------------------
+Accuracy : +0.33%
+F1 Score : +0.25%
+ROC AUC  : +0.19%
+
+Observations:
+-------------
+• Combining lexical and linguistic features improved performance across all metrics.
+• Handcrafted features complemented TF-IDF rather than replacing it.
+• The model maintained excellent generalization with nearly identical validation and test performance.
+• Hybrid feature engineering produced the strongest traditional machine learning model.
+
+Conclusion:
+-----------
+The Hybrid Linear SVM achieved the best performance among all traditional
+machine learning models and is selected as the final classical baseline for
+comparison with transformer-based models.
