@@ -21,8 +21,13 @@ def evaluate_model(model, X, y, dataset_name="Dataset"):
 
     # Probability scores if available
     if hasattr(model, "predict_proba"):
-        y_prob = model.predict_proba(X)[:, 1]
-        roc_auc = roc_auc_score(y, y_prob)
+        y_score = model.predict_proba(X)[:, 1]
+        roc_auc = roc_auc_score(y, y_score)
+
+    elif hasattr(model, "decision_function"):
+        y_score = model.decision_function(X)
+        roc_auc = roc_auc_score(y, y_score)
+
     else:
         roc_auc = None
 
