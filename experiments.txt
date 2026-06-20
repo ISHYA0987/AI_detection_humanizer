@@ -404,3 +404,104 @@ Conclusion:
 The Hybrid Linear SVM achieved the best performance among all traditional
 machine learning models and is selected as the final classical baseline for
 comparison with transformer-based models.
+
+================================================================================
+EXPERIMENT 5
+================================================================================
+
+Date: 20-06-2026
+
+Title:
+Transformer-Based AI Text Detection using RoBERTa
+
+Objective:
+Evaluate the performance of a fine-tuned RoBERTa transformer model for
+binary AI-generated text detection and compare its performance with
+traditional machine learning models.
+
+Dataset:
+final_dataset_trimmed.csv
+
+Dataset Split:
+Train       : 266,003
+Validation  : 33,250
+Test        : 33,251
+
+Text Preprocessing:
+-------------------
+- Remove URLs
+- Remove HTML Tags
+- Normalize Whitespaces
+- Preserve punctuation
+- Preserve stopwords
+- No stemming
+- No lemmatization
+- Tokenization using RoBERTa Tokenizer
+- Dynamic padding using DataCollatorWithPadding
+- Maximum sequence length: 256 tokens
+
+Tokenizer:
+----------
+Model               : roberta-base
+Maximum Length      : 256 tokens
+Padding             : Dynamic
+Truncation          : Enabled
+
+Model:
+------
+Pretrained Model    : RoBERTa Base
+Hidden Size         : 768
+Transformer Layers  : 12
+Attention Heads     : 12
+Classification Head : Sequence Classification (2 Output Labels)
+
+Training Configuration:
+-----------------------
+Epochs              : 3
+Batch Size          : 16
+Learning Rate       : 2e-5
+Optimizer           : AdamW
+Weight Decay        : 0.01
+Evaluation Strategy : Every Epoch
+Checkpoint Saving   : Every Epoch
+Best Model          : Loaded using Validation F1 Score
+Mixed Precision     : FP16 (CUDA only)
+Random Seed         : 42
+
+Validation Results:
+-------------------
+Accuracy : 0.9946
+Precision: 0.9946
+Recall   : 0.9946
+F1 Score : 0.9946
+ROC AUC  : 0.9996
+
+Test Results:
+-------------
+Accuracy : 0.9944
+Precision: 0.9944
+Recall   : 0.9944
+F1 Score : 0.9944
+ROC AUC  : 0.9996
+
+Comparison with Hybrid Linear SVM:
+----------------------------------
+Accuracy : +8.29%
+F1 Score : +5.96%
+ROC AUC  : +3.87%
+
+Observations:
+-------------
+• RoBERTa automatically learned contextual and semantic representations without manual feature engineering.
+• Dynamic padding reduced unnecessary computation and memory usage during training.
+• Loading the best checkpoint based on validation F1 score improved model reliability.
+• Validation and test performance were nearly identical, indicating excellent generalization.
+• The transformer model significantly outperformed all traditional machine learning baselines.
+
+Conclusion:
+-----------
+The fine-tuned RoBERTa model achieved the highest performance among all
+evaluated models. By leveraging contextual language understanding and
+transfer learning, it substantially outperformed TF-IDF and hybrid Linear
+SVM models. Therefore, the transformer model is selected as the final AI
+text detection model for the proposed AI Detection and Humanizer system.

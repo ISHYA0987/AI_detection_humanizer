@@ -3,6 +3,9 @@ data/
 
 # Ignore trained models
 models/
+models/detector
+models/detector/checkpoints
+models/Traditional_models
 
 # Ignore virtual environment
 venv/

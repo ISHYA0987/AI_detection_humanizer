@@ -6,16 +6,24 @@ from eval_model import evaluate_model
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
-
+# ==========================================
+# Load Data
+# ==========================================
 train = pd.read_csv("data/processed/train.csv")
 val = pd.read_csv("data/processed/validation.csv")
 
+# ==========================================
+# Clean Text
+# ==========================================
 train["text"] = train["text"].apply(clean_text)
 val["text"] = val["text"].apply(clean_text)
 
 y_train = train["label"]
 y_val = val["label"]
 
+# ==========================================
+# TF-IDF Experiments
+# ==========================================
 experiments = [
 
     {
@@ -72,7 +80,9 @@ best_f1 = 0
 best_model = None
 best_vectorizer = None
 
-
+# ==========================================
+# Run Experiments
+# ==========================================
 for exp in experiments:
 
     print("\n" + "="*70)
@@ -132,13 +142,17 @@ for exp in experiments:
 
         best_vectorizer = vectorizer
 
-
+# ==========================================
+# Results
+# ==========================================
 results_df = pd.DataFrame(results)
 
 print("\n")
 print(results_df.sort_values("f1", ascending=False))
 
-
+# ==========================================
+# Save Best Model
+# ==========================================
 joblib.dump(best_model, "models/best_logistic.pkl")
 
 joblib.dump(best_vectorizer, "models/best_tfidf.pkl")
