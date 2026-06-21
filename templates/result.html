@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detection Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-robot"></i>
+        AI Detector
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/detector">Detector</a></li>
+    </ul>
+
+</nav>
+
+<!-- ================= RESULT ================= -->
+
+<section class="result-page">
+
+    <div class="result-card">
+
+        <h1>Detection Result</h1>
+
+        <p class="subtitle">
+
+            Analysis completed successfully.
+
+        </p>
+
+        <!-- Prediction -->
+
+        <div class="prediction-box">
+
+            <h2>{{ prediction }}</h2>
+
+            <span class="confidence">
+
+                Confidence:
+                <strong>{{ confidence }}%</strong>
+
+            </span>
+
+        </div>
+
+        <!-- ================= Gauge ================= -->
+
+        <div class="analysis-section">
+
+            <h3>
+
+                <i class="fa-solid fa-gauge-high"></i>
+
+                Confidence Gauge
+
+            </h3>
+
+            <div id="gauge-container"></div>
+
+        </div>
+
+        <!-- ================= Probability ================= -->
+
+        <div class="analysis-section">
+
+            <h3>
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                Probability Analysis
+
+            </h3>
+
+            <div class="progress-item">
+
+                <span>AI</span>
+
+                <div class="progress">
+
+                    <div class="progress-fill ai"
+                         style="width: {{ ai_probability }}%;">
+
+                    </div>
+
+                </div>
+
+                <span>{{ ai_probability }}%</span>
+
+            </div>
+
+            <div class="progress-item">
+
+                <span>Human</span>
+
+                <div class="progress">
+
+                    <div class="progress-fill human"
+                         style="width: {{ human_probability }}%;">
+
+                    </div>
+
+                </div>
+
+                <span>{{ human_probability }}%</span>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Statistics ================= -->
+
+        <div class="analysis-section">
+
+            <h3>
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Text Statistics
+
+            </h3>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h4>Words</h4>
+                    <p>{{ words }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Characters</h4>
+                    <p>{{ characters }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Sentences</h4>
+                    <p>{{ sentences }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Paragraphs</h4>
+                    <p>{{ paragraphs }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Reading Time</h4>
+                    <p>{{ reading_time }} min</p>
+                </div>
+
+                <div class="stat-card">
+                    <h4>Average Sentence</h4>
+                    <p>{{ avg_sentence }} words</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Sentence Analysis ================= -->
+
+        <div class="analysis-section">
+
+            <h3>
+
+                <i class="fa-solid fa-highlighter"></i>
+
+                Sentence Analysis
+
+            </h3>
+
+            <div id="sentence-analysis">
+
+                <p class="coming-soon">
+
+                    Sentence-level AI highlighting will appear here.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Buttons ================= -->
+
+        <div class="button-group">
+
+            <a href="/detector" class="btn-primary">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Analyze Another Text
+
+            </a>
+
+            <button
+                class="btn-secondary"
+                onclick="copyResult()">
+
+                <i class="fa-solid fa-copy"></i>
+
+                Copy Result
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+
+        © 2026 AI Detection & Humanizer |
+        Built with Flask & Transformers
+
+    </p>
+
+</footer>
+
+<!-- ================= Scripts ================= -->
+
+<script src="{{ url_for('static', filename='js/gauge.js') }}"></script>
+
+<script>
+
+function copyResult() {
+
+    const text = `
+Prediction : {{ prediction }}
+
+Confidence : {{ confidence }}%
+
+AI Probability : {{ ai_probability }}%
+
+Human Probability : {{ human_probability }}%
+`;
+
+    navigator.clipboard.writeText(text);
+
+    alert("Result copied successfully!");
+
+}
+
+renderGauge(
+
+    "gauge-container",
+
+    Number("{{ confidence }}"),
+
+    "{{ prediction }}"
+
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,41 +1,148 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 
 <head>
 
-<title>Detector</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
+    <title>AI Text Detector</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- ================= NAVBAR ================= -->
 
-<h1>AI Text Detector</h1>
+<nav class="navbar">
 
-<textarea
-id="text"
-rows="12"
-placeholder="Paste text here..."
-></textarea>
+    <div class="logo">
+        <i class="fa-solid fa-robot"></i>
+        AI Detector
+    </div>
 
-<br><br>
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/detector">Detector</a></li>
+    </ul>
 
-<button onclick="detect()">
+</nav>
 
-Detect
+<!-- ================= DETECTOR ================= -->
 
-</button>
+<section class="detector-section">
 
-<div id="result"></div>
+    <div class="detector-card">
 
-</div>
+        <h1>AI Text Detector</h1>
 
+        <p>
+
+            Paste your text below and let our Transformer model
+            determine whether it is AI-generated or human-written.
+
+        </p>
+
+        <textarea
+
+            id="text"
+
+            rows="12"
+
+            placeholder="Paste at least 30 words here...">
+
+        </textarea>
+
+        <div class="button-group">
+
+            <button class="detect-btn" onclick="detect()">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                Detect AI
+
+            </button>
+
+            <button class="clear-btn" onclick="clearText()">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULT ================= -->
+
+<section class="result-section">
+
+    <div id="result" class="result-card">
+
+        <h2>Result</h2>
+
+        <p>
+
+            Your prediction will appear here after analysis.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+
+        © 2026 AI Detection & Humanizer | Built with Flask & Transformers
+
+    </p>
+
+</footer>
+
+<!-- ================= JavaScript ================= -->
+
+<!-- Gauge -->
+<script src="{{ url_for('static', filename='js/gauge.js') }}"></script>
+
+<!-- Main Script -->
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<script>
+
+function clearText(){
+
+    document.getElementById("text").value = "";
+
+    document.getElementById("result").innerHTML = `
+
+        <h2>Result</h2>
+
+        <p>Your prediction will appear here after analysis.</p>
+
+    `;
+
+}
+
+</script>
 
 </body>
 

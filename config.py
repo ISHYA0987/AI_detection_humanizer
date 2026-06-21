@@ -1,5 +1,24 @@
 import os
 
+# ==========================================
+# Base Directory
+# ==========================================
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-MODEL_PATH = os.path.join(BASE_DIR, "models", "detector")
+# ==========================================
+# Model Paths
+# ==========================================
+MODEL_SAVE_PATH = os.path.join(BASE_DIR, "models", "detector")
+
+# ==========================================
+# Model Parameters
+# ==========================================
+MAX_LENGTH = 512
+
+# ==========================================
+# Labels
+# ==========================================
+LABELS = {
+    0: "Human",
+    1: "AI"
+}
