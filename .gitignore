@@ -6,6 +6,7 @@ models/
 models/detector
 models/detector/checkpoints
 models/Traditional_models
+models/humanizer
 
 # Ignore virtual environment
 venv/
