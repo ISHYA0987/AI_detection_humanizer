@@ -1,4 +1,4 @@
-from detector.predictor import predict_text
+from detector.predictor import predict
 import re
 
 
@@ -19,18 +19,24 @@ def analyze_sentences(text):
 
     for sentence in sentences:
 
-        prediction, confidence, human_prob, ai_prob = predict_text(sentence)
+        result = predict(sentence)
+
+        # Skip very short sentences if validation fails
+        if not result["success"]:
+            continue
+
+        prediction = result["prediction"]
+        confidence = result["confidence"]
+        human_prob = result["human_probability"]
+        ai_prob = result["ai_probability"]
 
         if confidence >= 80:
-
             color = "red"
 
         elif confidence >= 50:
-
             color = "orange"
 
         else:
-
             color = "green"
 
         results.append({

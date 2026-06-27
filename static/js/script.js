@@ -1,3 +1,104 @@
+// ===============================
+// Humanizer
+// ===============================
+
+async function humanize() {
+
+    const text = document.getElementById("text").value.trim();
+
+    const outputSection = document.getElementById("humanizedOutput");
+    const outputBox = document.getElementById("humanizedText");
+
+    const button = event.target.closest("button");
+
+    // Disable button while generating
+    button.disabled = true;
+    button.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        Humanizing...
+    `;
+
+    outputSection.style.display = "block";
+    document.getElementById("originalText").value = text;
+
+    outputBox.value = "Generating human-like text...";
+
+    try {
+
+        const response = await fetch("/humanize", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                text: text
+            })
+
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+
+            outputBox.value = "";
+
+            alert(result.message);
+
+        } else {
+
+            outputBox.value = result.humanized_text;
+
+            // Smooth scroll to output
+            outputSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        outputBox.value = "";
+
+        alert("Something went wrong while humanizing the text.");
+
+    }
+
+    finally {
+
+        button.disabled = false;
+
+        button.innerHTML = `
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            Humanize Text
+        `;
+
+    }
+
+}
+
+function copyHumanizedText() {
+
+    const output = document.getElementById("humanizedText");
+
+    if (!output.value.trim()) {
+        alert("Nothing to copy.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value);
+
+    alert("Humanized text copied successfully!");
+
+}
+
 async function detect() {
 
     const text = document.getElementById("text").value.trim();
@@ -278,6 +379,112 @@ async function detect() {
             result.prediction
 
         );
+        // -------------------------
+// Show Humanizer (Only for AI)
+// -------------------------
+
+if (result.prediction === "AI Generated") {
+
+    resultDiv.innerHTML += `
+
+    <div class="result-card">
+
+        <div class="analysis-section">
+
+            <h3 style="text-align:center;">
+
+                ✨ AI-generated text detected
+
+            </h3>
+
+            <p style="text-align:center;">
+
+                Rewrite this text into natural human writing.
+
+            </p>
+
+            <div style="text-align:center;margin:20px 0;">
+
+                <button
+                    class="detect-btn"
+                    onclick="humanize()"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Humanize Text
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            id="humanizedOutput"
+            style="display:none;"
+        >
+
+            <div class="comparison-container">
+
+                <div class="comparison-box">
+
+                    <h3>
+
+                        Original Text
+
+                    </h3>
+
+                    <textarea
+                        id="originalText"
+                        readonly
+                    ></textarea>
+
+                </div>
+
+                <div class="comparison-box">
+
+                    <h3>
+
+                        Humanized Text
+
+                    </h3>
+
+                    <textarea
+                        id="humanizedText"
+                        readonly
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div
+                style="
+                text-align:center;
+                margin-top:25px;"
+            >
+
+                <button
+                    class="detect-btn"
+                    onclick="copyHumanizedText()"
+                >
+
+                    <i class="fa-solid fa-copy"></i>
+
+                    Copy Humanized Text
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
 
     }
 

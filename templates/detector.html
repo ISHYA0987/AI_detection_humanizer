@@ -128,17 +128,23 @@
 
 <script>
 
-function clearText(){
+function clearText() {
 
+    // Clear input
     document.getElementById("text").value = "";
 
+    // Reset result section
     document.getElementById("result").innerHTML = `
-
         <h2>Result</h2>
-
         <p>Your prediction will appear here after analysis.</p>
-
     `;
+
+    // Remove humanizer section if it exists
+    const humanizedOutput = document.getElementById("humanizedOutput");
+
+    if (humanizedOutput) {
+        humanizedOutput.remove();
+    }
 
 }
 

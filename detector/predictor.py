@@ -28,6 +28,12 @@ print("Model Loaded Successfully")
 
 def predict(text):
 
+    if len(text.split()) < 30:
+        return {
+            "success": False,
+            "message": "Please enter at least 30 words."
+        }
+
     inputs = tokenizer(
         text,
         return_tensors="pt",
@@ -50,8 +56,14 @@ def predict(text):
     human_prob = probs[0][0].item()
 
     return {
+
+        "success": True,
+
         "prediction": "AI Generated" if prediction == 1 else "Human Written",
+
         "confidence": round(max(ai_prob, human_prob) * 100, 2),
+
         "ai_probability": round(ai_prob * 100, 2),
+
         "human_probability": round(human_prob * 100, 2),
     }

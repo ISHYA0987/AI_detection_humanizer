@@ -1,6 +1,4 @@
-// ===============================
-// AI Confidence Gauge
-// ===============================
+
 
 function createGauge(confidence, prediction) {
 
@@ -53,10 +51,6 @@ function createGauge(confidence, prediction) {
     </div>
     `;
 }
-
-// ===============================
-// Render Gauge
-// ===============================
 
 function renderGauge(containerId, confidence, prediction) {
 
