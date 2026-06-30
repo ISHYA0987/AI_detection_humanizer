@@ -1,0 +1,208 @@
+.detector-section{
+    width:90%;
+    max-width:1100px;
+    margin:70px auto;
+}
+
+.detector-card{
+    padding:40px;
+}
+
+.detector-card h1{
+    font-size:40px;
+    margin-bottom:15px;
+    text-align:center;
+}
+
+.detector-card p{
+    text-align:center;
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+.detector-card textarea{
+    width:100%;
+    min-height:280px;
+    resize:vertical;
+    background:#0f172a;
+    color:#ffffff;
+    border:2px solid #1e3a8a;
+    border-radius:15px;
+    padding:20px;
+    font-size:16px;
+    outline:none;
+    transition:.3s;
+}
+
+.detector-card textarea:focus{
+    border-color:#3b82f6;
+    box-shadow:0 0 20px rgba(59,130,246,.25);
+}
+
+.result-section{
+    width:90%;
+    max-width:1100px;
+    margin:40px auto;
+}
+
+.result-card{
+    padding:40px;
+}
+
+.prediction-box{
+    background:#0f172a;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.prediction-box h2{
+    font-size:42px;
+    color:#3b82f6;
+}
+
+.confidence{
+    display:block;
+    margin-top:15px;
+    font-size:20px;
+}
+
+.analysis-section{
+    margin-top:45px;
+}
+
+.analysis-section h3{
+    margin-bottom:25px;
+    color:#60a5fa;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.stat-card{
+    background:#0f172a;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-card h4{
+    color:#94a3b8;
+    margin-bottom:12px;
+}
+
+.stat-card p{
+    font-size:30px;
+    font-weight:700;
+    color:#3b82f6;
+}
+
+.progress-item{
+    display:grid;
+    grid-template-columns:80px 1fr 70px;
+    gap:15px;
+    align-items:center;
+    margin:20px 0;
+}
+
+.progress{
+    height:18px;
+    background:#1e293b;
+    border-radius:25px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    border-radius:25px;
+    transition:width 1s ease;
+}
+
+.progress-fill.ai{
+    background:#ef4444;
+}
+
+.progress-fill.human{
+    background:#22c55e;
+}
+
+#sentence-analysis{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.sentence{
+    padding:18px;
+    border-radius:12px;
+    background:#0f172a;
+    border-left:6px solid #2563eb;
+}
+
+.sentence.red{
+    border-left-color:#ef4444;
+}
+
+.sentence.orange{
+    border-left-color:#f59e0b;
+}
+
+.sentence.green{
+    border-left-color:#22c55e;
+}
+
+.sentence p{
+    margin-bottom:10px;
+}
+
+.sentence span{
+    color:#94a3b8;
+    font-size:14px;
+}
+
+.gauge-wrapper{
+    position:relative;
+    width:220px;
+    height:220px;
+    margin:40px auto;
+}
+
+.gauge{
+    transform:rotate(-90deg);
+}
+
+.gauge-bg{
+    fill:none;
+    stroke:#334155;
+    stroke-width:15;
+}
+
+.gauge-progress{
+    fill:none;
+    stroke-width:15;
+    stroke-linecap:round;
+    transition:stroke-dashoffset 1.5s ease;
+}
+
+.gauge-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+.gauge-text h2{
+    font-size:38px;
+    color:#ffffff;
+}
+
+.gauge-text p{
+    margin-top:8px;
+    color:#94a3b8;
+}

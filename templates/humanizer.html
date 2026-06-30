@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Humanizer</title>
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/components.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/humanizer.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/responsive.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+        AI Humanizer
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li><a href="/">Home</a></li>
+
+        <li><a href="/detector">AI Detector</a></li>
+
+        <li><a href="/humanizer">AI Humanizer</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- ================= HUMANIZER ================= -->
+
+<section class="detector-section">
+
+    <div class="detector-card">
+
+        <h1>AI Humanizer</h1>
+
+        <p>
+
+            Rewrite AI-generated text into natural, fluent,
+            human-like writing using our fine-tuned FLAN-T5 model.
+
+        </p>
+
+        <textarea
+            id="text"
+            rows="12"
+            placeholder="Paste AI-generated text here..."
+        ></textarea>
+
+        <div class="button-group">
+
+            <button
+                class="detect-btn"
+                onclick="humanize()"
+            >
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Humanize
+
+            </button>
+
+            <button
+                class="clear-btn"
+                onclick="clearText()"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULT ================= -->
+
+<section
+    id="resultSection"
+    class="result-section"
+    style="display:none;"
+>
+
+    <div class="result-card">
+
+        <h2>Humanization Result</h2>
+
+        <div class="comparison-container">
+
+            <div class="comparison-box">
+
+                <h3>Original Text</h3>
+
+                <textarea
+                    id="originalText"
+                    readonly
+                ></textarea>
+
+            </div>
+
+            <div class="comparison-box">
+
+                <h3>Humanized Text</h3>
+
+                <textarea
+                    id="humanizedText"
+                    readonly
+                ></textarea>
+
+            </div>
+
+        </div>
+
+        <div
+            style="
+            margin-top:30px;
+            text-align:center;
+            "
+        >
+
+            <button
+                class="detect-btn"
+                onclick="copyHumanizedText()"
+            >
+
+                <i class="fa-solid fa-copy"></i>
+
+                Copy Humanized Text
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+
+        © 2026 AI Detection & Humanizer |
+        Built with Flask & Transformers
+
+    </p>
+
+</footer>
+
+<!-- ================= JavaScript ================= -->
+
+<script src="{{ url_for('static', filename='js/humanizer.js') }}"></script>
+
+<script>
+
+function clearText(){
+
+    document.getElementById("text").value = "";
+
+    document.getElementById("originalText").value = "";
+
+    document.getElementById("humanizedText").value = "";
+
+    document.getElementById("resultSection").style.display = "none";
+
+}
+
+</script>
+
+</body>
+
+</html>

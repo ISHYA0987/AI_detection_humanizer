@@ -1,7 +1,7 @@
 import pandas as pd 
 
 df=pd.read_csv("data/raw/ai_human_content_detection_dataset.csv")
-df1=pd.read_excel("data/raw/Dataset.xlsx")\
+df1=pd.read_excel("data/raw/Dataset.xlsx")
 df2=pd.read_csv("data/raw/train.csv")
 df3=pd.read_csv("data/raw/shuffled_Human.csv")
 

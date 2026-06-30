@@ -10,7 +10,7 @@ function createGauge(confidence, prediction) {
     const offset =
         circumference - (confidence / 100) * circumference;
 
-    let color = "#22c55e"; // Human (Green)
+    let color = "#22c55e"; 
 
     if (prediction.toLowerCase() === "ai") {
         color = "#ef4444"; // AI (Red)
@@ -51,6 +51,7 @@ function createGauge(confidence, prediction) {
     </div>
     `;
 }
+
 
 function renderGauge(containerId, confidence, prediction) {
 

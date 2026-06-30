@@ -8,7 +8,16 @@
     <title>AI Detection & Humanizer</title>
 
     <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+      href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/components.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/home.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/responsive.css') }}">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -27,15 +36,20 @@
 
         <div class="logo">
             <i class="fa-solid fa-robot"></i>
-            AI Detector
+            AI Detection & Humanizer
         </div>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="/detector">Detector</a></li>
-        </ul>
+
+    <li><a href="/">Home</a></li>
+
+    <li><a href="/detector">AI Detector</a></li>
+
+    <li><a href="/humanizer">AI Humanizer</a></li>
+
+    <li><a href="#how">How it works</a></li>
+
+</ul>
 
     </nav>
 
@@ -60,19 +74,23 @@
 
             <div class="hero-buttons">
 
-                <a href="/detector" class="btn-primary">
+    <a href="/detector" class="btn-primary">
 
-                    Try AI Detector
+        <i class="fa-solid fa-magnifying-glass"></i>
 
-                </a>
+        AI Detector
 
-                <a href="#features" class="btn-secondary">
+    </a>
 
-                    Learn More
+    <a href="/humanizer" class="btn-secondary">
 
-                </a>
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
 
-            </div>
+        AI Humanizer
+
+    </a>
+
+</div>
 
         </div>
 
@@ -80,141 +98,132 @@
 
             <div class="hero-card">
 
-                <h3>AI Detection</h3>
+                <h3>AI Writing Suite</h3>
 
-                <p>✓ Transformer Based</p>
-                <p>✓ Confidence Score</p>
-                <p>✓ Fast Prediction</p>
-                <p>✓ Sentence Analysis</p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <section id="features" class="features">
-
-        <h2>Features</h2>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-brain"></i>
-
-                <h3>AI Detection</h3>
-
-                <p>
-
-                    Detect AI-generated content using a fine-tuned Transformer
-                    model.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-chart-column"></i>
-
-                <h3>Confidence Score</h3>
-
-                <p>
-
-                    View prediction confidence with probability analysis.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-file-lines"></i>
-
-                <h3>Text Statistics</h3>
-
-                <p>
-
-                    Analyze word count, reading time, sentence count and more.
-
-                </p>
-
-            </div>
-
-            <div class="feature-card">
-
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-
-                <h3>AI Humanizer</h3>
-
-                <p>
-
-                    Rewrite AI-generated text into natural human writing.
-
-                </p>
+                <p>✓ AI Detection</p>
+                <p>✓ AI Humanizer</p>
+                <p>✓ Transformer Powered</p>
+                <p>✓ Fast Inference</p>
 
             </div>
 
         </div>
 
     </section>
+<section class="tools">
+
+    <h2>Our AI Tools</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-robot"></i>
+
+            <h3>AI Detector</h3>
+
+            <p>
+
+                Detect AI-generated content with confidence scores,
+                sentence-level analysis, and advanced Transformer models.
+
+            </p>
+
+            <a href="/detector" class="btn-primary">
+
+                Launch Detector
+
+            </a>
+
+        </div>
+
+        <div class="feature-card">
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            <h3>AI Humanizer</h3>
+
+            <p>
+
+                Convert AI-generated content into natural,
+                fluent, human-like writing.
+
+            </p>
+
+            <a href="/humanizer" class="btn-primary">
+
+                Launch Humanizer
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+    
 
     <!-- ================= HOW IT WORKS ================= -->
 
     <section id="how" class="how-it-works">
 
-        <h2>How It Works</h2>
+    <h2>How It Works</h2>
 
-        <div class="steps">
+    <div class="steps">
 
-            <div class="step">
+        <div class="step">
 
-                <div class="number">1</div>
+            <div class="number">1</div>
 
-                <h3>Paste Text</h3>
+            <h3>Paste Your Text</h3>
 
-                <p>
+            <p>
 
-                    Enter or paste the text you want to analyze.
+                Paste AI-generated or human-written text into the editor.
+                Our platform accepts content of various lengths for analysis
+                or rewriting.
 
-                </p>
-
-            </div>
-
-            <div class="step">
-
-                <div class="number">2</div>
-
-                <h3>Run Detection</h3>
-
-                <p>
-
-                    Our Transformer model processes the content.
-
-                </p>
-
-            </div>
-
-            <div class="step">
-
-                <div class="number">3</div>
-
-                <h3>View Results</h3>
-
-                <p>
-
-                    Get prediction, confidence score and detailed analysis.
-
-                </p>
-
-            </div>
+            </p>
 
         </div>
 
-    </section>
+        <div class="step">
+
+            <div class="number">2</div>
+
+            <h3>Choose Your Tool</h3>
+
+            <p>
+
+                Detect whether your content is AI-generated or transform it
+                into natural, human-like writing using our fine-tuned
+                Transformer models.
+
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="number">3</div>
+
+            <h3>View & Use Results</h3>
+
+            <p>
+
+                Get instant predictions, confidence scores, detailed text
+                analysis, or download your rewritten humanized content with
+                a single click.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
     <!-- ================= CTA ================= -->
 
@@ -222,22 +231,32 @@
 
         <h2>
 
-            Ready to Analyze Your Text?
+           Ready to Improve Your Writing?
 
         </h2>
 
         <p>
 
-            Experience fast and accurate AI content detection powered by
-            Transformer models.
+            Use our AI Detector and AI Humanizer to
+            analyze and refine your writing in seconds.
 
         </p>
 
-        <a href="/detector" class="btn-primary">
+       <div class="hero-buttons">
 
-            Launch Detector
+    <a href="/detector" class="btn-primary">
 
-        </a>
+        AI Detector
+
+    </a>
+
+    <a href="/humanizer" class="btn-secondary">
+
+        AI Humanizer
+
+    </a>
+
+</div>
 
     </section>
 
@@ -245,15 +264,13 @@
 
     <footer>
 
-        <p>
+    <p>
 
-            © 2026 AI Detection & Humanizer |
-            Built with Flask & Transformers
+        © 2026 AI Detection & Humanizer | Powered by Flask & Hugging Face Transformers
 
-        </p>
+    </p>
 
-    </footer>
-
+</footer>
 </body>
 
 </html>
